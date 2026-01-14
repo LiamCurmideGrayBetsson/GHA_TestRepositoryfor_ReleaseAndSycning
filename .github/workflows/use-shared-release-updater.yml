@@ -13,7 +13,7 @@ permissions:
 jobs:
   call-shared:
     if: github.event.pull_request.merged == true
-    uses: LiamCurmideGrayBetsson/GHA_ReleaseUpdating-and-Syncing/.github/workflows/update-release-branches.yml@release/TheUpdatingBranch_UsedForTesting
+    uses: LiamCurmideGrayBetsson/GHA_ReleaseUpdating-and-Syncing/.github/workflows/update-release-branches.yml@main
     with:
       base_branch: ${{ github.event.pull_request.base.ref }}
       merged_pr_number: ${{ github.event.pull_request.number }}
