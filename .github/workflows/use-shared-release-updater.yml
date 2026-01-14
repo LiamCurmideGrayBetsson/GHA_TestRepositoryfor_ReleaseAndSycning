@@ -1,0 +1,20 @@
+name: Use Shared Release Updater
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  call-shared:
+    if: github.event.pull_request.merged == true
+    uses: LiamCurmideGrayBetsson/GHA_ReleaseUpdating-and-Syncing/.github/workflows/update-release-branches.yml@release/TheUpdatingBranch_UsedForTesting
+    with:
+      base_branch: ${{ github.event.pull_request.base.ref }}
+      merged_pr_number: ${{ github.event.pull_request.number }}
+    secrets: inherit
